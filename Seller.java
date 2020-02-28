@@ -45,7 +45,7 @@ public class Seller
     //get the name
     public String getName()
     {
-        return (name); //exit method name
+        return name; //exit method name
     }
     
      /**
@@ -133,5 +133,6 @@ public class Seller
     
     public void printData ()
     {
+
     }
 }
