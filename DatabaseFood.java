@@ -1,9 +1,9 @@
-
 /**
- * Write a description of class DatabaseFood here.
+ * ini berfungsi untuk menyimpan semua data dari databaseFood
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author eko satria
+ * @version 0.9.0
+ * @sin28-02-2020
  */
 public class DatabaseFood
 {
@@ -12,20 +12,15 @@ public class DatabaseFood
 
     /**
      * Constructor for objects of class DatabaseFood
+     * @param listFood
      */
     public DatabaseFood()
     {
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
     public boolean addFood(Food food)
     {
-        return (true);
+        return (true); 
     }
     
     public boolean removeFood(Food food)
@@ -33,8 +28,14 @@ public class DatabaseFood
         return (true);
     }
         
+    /**
+     * get listFood method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return listFood
+     */
+    //get the listFood
     public String getListFood ()
     {
-        return (listFood);
+        return (listFood); //exit method listFood
     }
 }

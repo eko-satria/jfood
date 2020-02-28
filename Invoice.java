@@ -1,8 +1,9 @@
 /**
- * Write a description of class Invoice here.
+ * ini berfungsi untuk menyimpan semua data dari invoice
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author eko satria
+ * @version 0.9.0
+ * @sin28-02-2020
  */
 public class Invoice
 {
@@ -11,63 +12,122 @@ public class Invoice
     private String date;
     private Customer customer;
     
+    /**
+     * Constructor for objects of class Invoice
+     * @param customer, @param id, @param idFood, 
+     * @param date, @param totalPrice 
+     */
     public Invoice(int id, int idFood, String date, Customer customer, int totalPrice)
     {
-        this.customer = customer;
-        this.id = id;
-        this.idFood = idFood;
-        this.date = date;
-        this.totalPrice = totalPrice;
+        this.customer = customer; // customer disini mengarah pada customer instance
+        this.id = id; //id disini mengarah pada id instance
+        this.idFood = idFood; // idFood disini mengarah pada idFood instance
+        this.date = date; //date disini mengarah pada date instance
+        this.totalPrice = totalPrice; //totalPrice disini mengarah pada totalPrice instance
     }
 
+     /**
+     * get id method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return id
+     */
+    //get the id
     public int getId()
     {
-        return (id);
+        return (id); //exit method id
     }
 
+     /**
+     * get idFood method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return idFood
+     */
+    //get the idFood
     public int getIdFood()
     {
-        return (idFood);
+        return (idFood); //exit method idFood
     }    
-    
+ 
+         /**
+     * get date method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return date
+     */
+    //get the date
     public String getDate()
     {
-        return (date);
+        return (date); //exit method date
     }    
 
+         /**
+     * get totalPrice method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return totalPrice
+     */
+    //get the totalPrice
     public int getTotalPrice()
     {
-        return (totalPrice);
+        return (totalPrice); //exit method totalPrice
     }    
     
+     /**
+     * get customer method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return customer
+     */
     public Customer getCustomer()
     {
-        return(customer);
+        return(customer); //exit method customer
     }
     
+        /**
+     * set id
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param id
+     */
     public void setId(int id)
     {
-        this.id = id;
+        this.id = id; //assign id ke id instance
     }
     
+     /**
+     * set idFood
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param idFood
+     */
     public void setidFood(int idFood)
     {
-        this.idFood = idFood;
+        this.idFood = idFood; //assign idFood ke idFood instance
     }
     
+     /**
+     * set date
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param date
+     */
     public void setDate(String date)
     {
-        this.date = date;
+        this.date = date; //assign date ke date instance
     }
     
+     /**
+     * set totalPrice
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param totalPrice
+     */
     public void setTotalPrice(int totalPrice)
     {
-        this.totalPrice = totalPrice;
+        this.totalPrice = totalPrice; //assign totalPrice ke totalPrice instance
     }
     
+     /**
+     * set customer
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param customer
+     */
     public void setCustomer(Customer customer)
     {
-        this.customer = customer;
+        this.customer = customer; //assign customer ke customer instance
     }
     
     public void printData()

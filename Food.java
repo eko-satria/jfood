@@ -1,9 +1,9 @@
-
 /**
- * Write a description of class Food here.
+ * ini berfungsi untuk menyimpan semua data dari food
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author eko satria
+ * @version 0.9.0
+ * @sin28-02-2020
  */
 public class Food
 {
@@ -13,71 +13,122 @@ public class Food
     private Seller seller;
 
     /**
-     * Constructor for objects of class Food
+     * Constructor for objects of class Customer
+     * @param id, @param name, 
+     * @param seller, @param price, @param category
      */
     public Food(int id, String name, Seller seller, int price, String Category)
     {
-        this.id = id;
-        this.name = name;
-        this.seller = seller;
-        this.price = price;
-        this.category = category;
+        this.id = id; //id disini mengarah pada id instance
+        this.name = name; //name disini mengarah pada name instance
+        this.seller = seller; //seller disini mengarah pada seller instance
+        this.price = price; //price disini mengarah pada price instance
+        this.category = category; //category disini mengarah pada category instance
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     /**
+     * get id method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return id
      */
+    //get the id
     public int getId()
     {
-        return (id);
+        return (id); //exit method id
     }
     
+     /**
+     * get seller method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return seller
+     */
+    //get the seller
     public Seller getseller()
     {
-        return (seller);
+        return (seller); //exit method seller
     }
     
+     /**
+     * get name method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return name
+     */
+    //get the name
     public String getName()
     {
-        return (name);
+        return (name); //exit method name
     }
-
+    
+     /**
+     * get price method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return price
+     */
+    //get the price
     public int getPrice()
     {
-        return (price);
+        return (price); //exit method price
     }
     
+     /**
+     * get category method
+     * berfungsi mengambil objek state terakhir dari id instance
+     * @return category
+     */
+    //get the category
     public String getCategory()
     {
-        return (category);
+        return (category); //exit method category
     }
     
+        /**
+     * set id
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param id
+     */
     public void setId(int id)
     {
-        this.id = id;
+        this.id = id; //assign id ke id instance
     }
     
+        /**
+     * set seller
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param seller
+     */
     public void setSeller(Seller seller)
     {
-        this.seller = seller;
+        this.seller = seller; //assign seller ke seller instance
     }
     
+        /**
+     * set name
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param name
+     */
     public void setName(String name)
     {
-        this.name = name;
+        this.name = name; //assign name ke name instance
     }
     
+        /**
+     * set price
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param price
+     */
     public void setPrice(int price)
     {
-        this.price = price;
+        this.price = price; //assign price ke price instance
     }
     
+        /**
+     * set category
+     * berfungsi mengupdate objek state terakhir dari id instance
+     * @param category
+     */
     public void setCategory(String category)
     {
-        this.category = category;
+        this.category = category; //assign category ke category instance
     }
     
     public void printData()
