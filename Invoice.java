@@ -11,19 +11,22 @@ public class Invoice
     private int id, idFood, totalPrice;
     private String date;
     private Customer customer;
+    private PaymentType paymentType;
+    private InvoiceStatus status;
     
     /**
      * Constructor for objects of class Invoice
      * @param customer, @param id, @param idFood, 
      * @param date, @param totalPrice 
      */
-    public Invoice(int id, int idFood, String date, Customer customer, int totalPrice)
+    public Invoice(int id, int idFood, String date, Customer customer, int totalPrice, InvoiceStatus status)
     {
         this.customer = customer; // customer disini mengarah pada customer instance
         this.id = id; //id disini mengarah pada id instance
         this.idFood = idFood; // idFood disini mengarah pada idFood instance
         this.date = date; //date disini mengarah pada date instance
         this.totalPrice = totalPrice; //totalPrice disini mengarah pada totalPrice instance
+        this.status = status;
     }
 
      /**
@@ -80,6 +83,11 @@ public class Invoice
         return(customer); //exit method customer
     }
     
+    public InvoiceStatus getStatus()
+    {
+        return status;
+    }
+    
         /**
      * set id
      * berfungsi mengupdate objek state terakhir dari id instance
@@ -130,9 +138,20 @@ public class Invoice
         this.customer = customer; //assign customer ke customer instance
     }
     
+    public void setStatus(InvoiceStatus status)
+    {
+        this.status = status;
+    }
+    
     public void printData()
     {
-        System.out.println(totalPrice);
+        System.out.println("====INVOICE====");
+        System.out.println("ID: " +getId());
+        System.out.println("Food ID: " + getIdFood());
+        System.out.println("Date: " +getDate());
+        System.out.println("Customer: " + getCustomer().getName());
+        System.out.println("Total Price: " +getTotalPrice());
+        System.out.println("Status: " + getStatus());
     }
     
 }

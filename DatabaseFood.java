@@ -8,7 +8,7 @@
 public class DatabaseFood
 {
     // instance variables - replace the example below with your own
-    private String listFood;
+    private static String[] listFood;
 
     /**
      * Constructor for objects of class DatabaseFood
@@ -28,13 +28,17 @@ public class DatabaseFood
         return (true);
     }
         
+    public Seller getSeller()
+    {
+        return null;
+    }
     /**
      * get listFood method
      * berfungsi mengambil objek state terakhir dari id instance
      * @return listFood
      */
     //get the listFood
-    public String getListFood ()
+    public static String[] getListFood ()
     {
         return (listFood); //exit method listFood
     }

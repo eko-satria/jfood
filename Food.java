@@ -1,3 +1,4 @@
+
 /**
  * ini berfungsi untuk menyimpan semua data dari food
  *
@@ -9,15 +10,16 @@ public class Food
 {
     // instance variables - replace the example below with your own
     private int id, price;
-    private String name, category;
+    private String name;
     private Seller seller;
+    private FoodCategory category;
 
     /**
      * Constructor for objects of class Customer
      * @param id, @param name, 
      * @param seller, @param price, @param category
      */
-    public Food(int id, String name, Seller seller, int price, String Category)
+    public Food(int id, String name, Seller seller, int price, FoodCategory category)
     {
         this.id = id; //id disini mengarah pada id instance
         this.name = name; //name disini mengarah pada name instance
@@ -43,7 +45,7 @@ public class Food
      * @return seller
      */
     //get the seller
-    public Seller getseller()
+    public Seller getSeller()
     {
         return (seller); //exit method seller
     }
@@ -76,9 +78,9 @@ public class Food
      * @return category
      */
     //get the category
-    public String getCategory()
+    public FoodCategory getCategory()
     {
-        return (category); //exit method category
+        return category; //exit method category
     }
     
         /**
@@ -126,13 +128,19 @@ public class Food
      * berfungsi mengupdate objek state terakhir dari id instance
      * @param category
      */
-    public void setCategory(String category)
+    public void setCategory(FoodCategory category)
     {
         this.category = category; //assign category ke category instance
     }
     
     public void printData()
     {
+           System.out.println("===========FOOD===========");
+           System.out.println(id);
            System.out.println(name);
+           System.out.println(seller.getName());
+           System.out.println(getSeller().getLocation().getCity());
+           System.out.println(getPrice());
+           System.out.println(getCategory());
     }
 }

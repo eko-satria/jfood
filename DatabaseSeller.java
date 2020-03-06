@@ -8,7 +8,7 @@
 public class DatabaseSeller
 {
     // instance variables - replace the example below with your own
-    private String listSeller;
+    private static String[] listSeller;
 
     /**
      * Constructor for objects of class DatabaseSeller
@@ -36,11 +36,11 @@ public class DatabaseSeller
     
     public Seller getSeller()
     {
-        return(null);
+        return null;
     }
     
-    public String getListSeller()
+    public static String[] getListSeller()
     {
-        return(listSeller);
+        return listSeller;
     }
 }

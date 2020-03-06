@@ -12,5 +12,5 @@ comment3.target=boolean\ removeSeller(Seller)
 comment4.params=
 comment4.target=Seller\ getSeller()
 comment5.params=
-comment5.target=java.lang.String\ getListSeller()
+comment5.target=java.lang.String[]\ getListSeller()
 numComments=6

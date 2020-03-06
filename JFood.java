@@ -1,7 +1,6 @@
 public class JFood
 {   
-   
-    public static void main (String[] args){
+       public static void main (String[] args){
             //location dulu karna seller membutuhkan location 
         //sebagai salah satu classnya
         Location location1 = new Location 
@@ -17,7 +16,7 @@ public class JFood
         Food food1 = new Food
         //urutannya
         //id, "name", seller, price, "category"
-        (1, "ayam geprek", seller1, 14000, "ayam");
+        (1, "ayam geprek", seller1, 14000, FoodCategory.Coffee);
         Customer customer1 = new Customer
         //urutannya
         //id,"name","eamil","password","joinDate"
@@ -25,13 +24,10 @@ public class JFood
         //urutannya
         //id, idFood,"joinDate",customer, totalPrice
         Invoice invoice1 = new Invoice
-        (1, 14, "27-2-2020", customer1, 14000);
+        (1, 14, "27-2-2020", customer1, 14000, InvoiceStatus.FINISHED   );
 
-        System.out.println(seller1.getName());
-        food1.getName();
-        customer1.getName();
-        
-        
+        invoice1.printData();
+               
     }
              
 }
