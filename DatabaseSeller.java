@@ -24,17 +24,17 @@ public class DatabaseSeller
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public boolean addSeller (Seller seller)
+    public static boolean addSeller (Seller seller)
     {
         return(true);
     }
     
-    public boolean removeSeller(Seller seller)
+    public static boolean removeSeller(Seller seller)
     {
         return(true);
     }
     
-    public Seller getSeller()
+    public static Seller getSeller()
     {
         return null;
     }

@@ -21,13 +21,9 @@ public class JFood
         //urutannya
         //id,"name","eamil","password","joinDate"
         (1, "hanon", "hanonnya@gmail.com", "nigga", "22-1-2019");
-        //urutannya
-        //id, idFood,"joinDate",customer, totalPrice
-        Invoice invoice1 = new Invoice
-        (1, 14, "27-2-2020", customer1, 14000, InvoiceStatus.FINISHED   );
-
-        invoice1.printData();
-               
+        Promo promo1 = new Promo
+        (1, "code1", 30, 12000, true);       
+        
     }
              
 }
