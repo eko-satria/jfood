@@ -85,7 +85,7 @@ public abstract class Invoice
         return customer; //exit method customer
     }
     
-    public abstract PaymentType getPayment();
+    public abstract PaymentType getPaymentType();
     
     public InvoiceStatus getInvoiceStatus()
     {

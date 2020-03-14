@@ -10,13 +10,9 @@ public enum PaymentType
     Cash("Cash"), 
     Cashless("Cashless");
     
-    public String PT;
-    private PaymentType(String PT)
+    public String pt;
+    private PaymentType(String pt)
     {
-        this.PT=PT;
-    }
-    public String toString()
-    {
-        return toString();
+        this.pt=pt;
     }
 }
