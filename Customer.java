@@ -1,4 +1,5 @@
-
+import java.util.*;
+import java.util.regex.*;
 /**
  * ini berfungsi untuk menyimpan semua data dari customer
  *
@@ -9,20 +10,39 @@
 public class Customer
 {
     private int id;
-    private String name, email, password, joinDate;
+    private String name, email, password;
+    private Calendar joinDate;
 
     /**
      * Constructor for objects of class Customer
      * @param id, @param name, @param email, 
      * @param passwword, @param joinDate
      */
-    public Customer(int id, String name, String email, String password, String joinDate)
+    public Customer(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id = id; //id disini mengarah pada id instance
         this.name = name; //name disini mengarah pada name instance
         this.email = email; //email disini mengarah pada email instance
         this.password = password; //password disini mengarah pada password instance
         this.joinDate = joinDate; //joinDate disini mengarah pada joinDate instance
+    }
+    
+    public Customer(int id, String name, String email, String password, int year, int month, int dayofMonth)
+    {
+        this.id = id; //id disini mengarah pada id instance
+        this.name = name; //name disini mengarah pada name instance
+        this.email = email; //email disini mengarah pada email instance
+        this.password = password; //password disini mengarah pada password instance
+        this.joinDate = new GregorianCalendar(year, month, dayofMonth);
+    }
+    
+    public Customer(int id, String name, String email, String password)
+    {
+        this.id = id; //id disini mengarah pada id instance
+        this.name = name; //name disini mengarah pada name instance
+        this.email = email; //email disini mengarah pada email instance
+        this.password = password; //password disini mengarah pada password instance
+       
     }
     
     /**
@@ -75,7 +95,7 @@ public class Customer
      * @return joinDate
      */
     //get the joinDate
-    public String getJoinDate()
+    public Calendar getJoinDate()
     {
         return (joinDate); //exit method joinDate
     }    
@@ -107,7 +127,20 @@ public class Customer
      */
     public void setEmail(String email)
     {
-        this.email = email; //assign email ke email instance
+        String pattern = "[a-zA-Z0-9_+&*-]+(?:\\."+ "[a-zA-Z0-9_+&*-]+)*@"+"(?:[a-zA-Z0-9-]+\\.)[a-z+A-Z]{2,7}$";
+        
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(email);
+        if(m.find())
+        {
+            System.out.println("Email: " +m.group());
+            this.email = email; //assign email ke email instance
+        }
+        else
+        {
+            System.out.println("Email: null");
+            this.email = email; //assign email ke email instance
+        }
     }
     
      /**
@@ -117,7 +150,21 @@ public class Customer
      */
     public void setPassword(String password)
     {
-        this.password = password; //assign password ke password instance
+        String pattern = "(?=.*[a-z])(?=.*d)(?=.*[A-Z]).{6,}";
+        
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(email);
+        if(m.find())
+        {
+            System.out.println("Password" +m.group());
+            this.password = password;
+        }
+        else
+        {
+            System.out.println("Password: null");
+            this.password = password; //assign email ke email instance
+        }
+        
     }
     
     /**
@@ -125,13 +172,19 @@ public class Customer
      * berfungsi mengupdate objek state terakhir dari joinDate instance 
      * @joinDate
      */    
-    public void setJoinDate(String joinDate)
+    public void setJoinDate(Calendar joinDate)
     {
         this.joinDate = joinDate; //assign joinDate ke email joinDate
     }
     
-    public void printData ()
+    public void setJoinDate(int year, int month, int dayofMonth)
     {
+        this.joinDate = new GregorianCalendar(year, month, dayofMonth);
+    }
+    
+    public String toString()
+    {
+        return name.toString();
     }
     
 }
