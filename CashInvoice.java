@@ -1,3 +1,10 @@
+import java.util.*; 
+import java.util.Calendar; 
+import java.util.Date; 
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat; 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern; 
 /**
  * Write a description of class CashInvoice here.
  *
@@ -10,13 +17,13 @@ public class CashInvoice extends Invoice
     private int deliveryFee;
 
     public CashInvoice
-    (int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
+    (int id, Food food, Calendar date, Customer customer, InvoiceStatus invoiceStatus)
     {
         super(id, food, date, customer, invoiceStatus);
     }
     
     public CashInvoice
-    (int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
+    (int id, Food food, Calendar date, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
     {
         super(id, food, date, customer, invoiceStatus);
         this.deliveryFee = deliveryFee;
@@ -36,25 +43,33 @@ public class CashInvoice extends Invoice
             super.totalPrice = getFood().getPrice();
         }
     }
-    public void printData()
+    public String toString()
     {
+        String string = "";
+        SimpleDateFormat format1 = new SimpleDateFormat ("dd-MM-yyyy"); 
+        Date date = new Date();
         if(deliveryFee != 0)
         {
-        System.out.println("=====INVOICE=====");
-        System.out.println("ID: "+ super.getId());
-        System.out.println("Food: "+ super.getFood().getName());
-        System.out.println("Date: " +super.getDate());
-        System.out.println("Total Price: "+totalPrice);
-        System.out.println("Invoice Status: "+super.getInvoiceStatus());
+            
+            string = 
+                    "=====INVOICE=====" +"\n"+
+                    "ID: "+ super.getId()+"\n"+
+                    "Food: "+ super.getFood().getName()+"\n"+
+                    "Date: " +super.getDate()+"\n"+
+                    "Total Price: "+totalPrice+"\n"+
+                    "Invoice Status: "+super.getInvoiceStatus();
         }
         else
         {
-        System.out.println("=====INVOICE=====");
-        System.out.println("ID: "+ super.getId());
-        System.out.println("Food: "+ super.getFood().getName());
-        System.out.println("Date: " +super.getDate());
-        System.out.println("Total Price: "+totalPrice);
-        System.out.println("Invoice Status: "+super.getInvoiceStatus());
+            string = 
+                "=====INVOICE====="+"\n"+
+                "ID: "+ super.getId()+"\n"+
+                "Food: "+ super.getFood().getName()+"\n"+
+                "Date: " +super.getDate()+"\n"+
+                "Total Price: "+totalPrice+"\n"+
+                "Invoice Status: "+super.getInvoiceStatus();
         }
+        System.out.println(string); 
+        return string; 
     }    
 }

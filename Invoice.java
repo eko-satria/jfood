@@ -1,3 +1,10 @@
+import java.util.*; 
+import java.util.Calendar; 
+import java.util.Date; 
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat; 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern; 
 /**
  * ini berfungsi untuk menyimpan semua data dari invoice
  *
@@ -10,7 +17,7 @@ public abstract class Invoice
     // instance variables - replace the example below with your own
     private int id;
     protected int totalPrice;
-    private String date;
+    private Calendar date;
     private Customer customer;
     private PaymentType paymentType;
     private InvoiceStatus invoiceStatus;
@@ -21,7 +28,7 @@ public abstract class Invoice
      * @param customer, @param id, @param idFood, 
      * @param date, @param totalPrice 
      */
-    public Invoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
+    public Invoice(int id, Food food, Calendar date, Customer customer, InvoiceStatus invoiceStatus)
     {
         this.customer = customer; // customer disini mengarah pada customer instance
         this.id = id; //id disini mengarah pada id instance
@@ -29,6 +36,8 @@ public abstract class Invoice
         this.date = date; //date disini mengarah pada date instance
         this.totalPrice = totalPrice; //totalPrice disini mengarah pada totalPrice instance
         this.invoiceStatus = invoiceStatus;
+        setDate(date);
+        setDate(date);
     }
 
      /**
@@ -59,7 +68,7 @@ public abstract class Invoice
      * @return date
      */
     //get the date
-    public String getDate()
+    public Calendar getDate()
     {
         return date; //exit method date
     }    
@@ -117,7 +126,7 @@ public abstract class Invoice
      * berfungsi mengupdate objek state terakhir dari id instance
      * @param date
      */
-    public void setDate(String date)
+    public void setDate(Calendar date)
     {
         this.date = date; //assign date ke date instance
     }
@@ -144,6 +153,11 @@ public abstract class Invoice
         this.invoiceStatus = invoiceStatus;
     }
     
-    public abstract void printData();
+    public void setDate(int year, int month, int dayofMonth)
+    {
+        this.date = new GregorianCalendar(year, month-1, dayofMonth);
+    }
+    
+    public String toString(){return "";}
     
 }

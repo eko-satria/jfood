@@ -1,4 +1,8 @@
-
+import java.util.*; 
+import java.util.Calendar; 
+import java.util.Date; 
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat; 
 /**
  * Write a description of class CashlessInvoice here.
  *
@@ -11,12 +15,12 @@ public class CashlessInvoice extends Invoice
     private final static PaymentType PAYMENT_TYPE = PaymentType.Cashless;
     private Promo promo;
 
-    public CashlessInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
+    public CashlessInvoice(int id, Food food, Calendar date, Customer customer, InvoiceStatus invoiceStatus)
     {
         super(id, food, date, customer, invoiceStatus);
     }
     
-    public CashlessInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
+    public CashlessInvoice(int id, Food food, Calendar date, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
     {
         super(id, food, date, customer, invoiceStatus);
         this.promo = promo;
@@ -36,44 +40,52 @@ public class CashlessInvoice extends Invoice
             super.totalPrice = getFood().getPrice();
         }
     }
-    public void printData()
+    public String toString()
     {
+        String string = "";
+        SimpleDateFormat format1 = new SimpleDateFormat ("dd-MM-yyyy"); 
+        Date date = new Date();
         if(promo!=null)
         {
             if(totalPrice>=promo.getMinPrice())
             {
-                System.out.println("=====INVOICE=====");
-                System.out.println("ID: "+ super.getId());
-                System.out.println("Food: "+ super.getFood().getName());
-                System.out.println("Date: " +super.getDate());
-                System.out.println("Customer: " +super.getCustomer().getName());
-                System.out.println("Promo: "+promo.getCode());
-                System.out.println("Total Price: "+totalPrice);
-                System.out.println("Status: "+super.getInvoiceStatus());
-                System.out.println("Payment Type: " +getPaymentType());
+                string=  
+                    "=====INVOICE====="+"\n"+
+                    "ID: "+ super.getId()+"\n"+
+                    "Food: "+ super.getFood().getName()+"\n"+
+                    "Date: " +super.getDate()+"\n"+
+                    "Customer: " +super.getCustomer().getName()+"\n"+
+                    "Promo: "+promo.getCode()+"\n"+
+                    "Total Price: "+totalPrice+"\n"+
+                    "Status: "+super.getInvoiceStatus()+"\n"+
+                    "Payment Type: " +getPaymentType();
             }
             else
             {
-                System.out.println("=====INVOICE=====");
-                System.out.println("ID: "+ super.getId());
-                System.out.println("Food: "+ super.getFood().getName());
-                System.out.println("Date: " +super.getDate());
-                System.out.println("Customer: " +super.getCustomer().getName());
-                System.out.println("Total Price: "+totalPrice);
-                System.out.println("Status: "+super.getInvoiceStatus());
-                System.out.println("Payment Type: " +getPaymentType());
+                string=  
+                    "=====INVOICE====="+"\n"+
+                    "ID: "+ super.getId()+"\n"+
+                    "Food: "+ super.getFood().getName()+"\n"+
+                    "Date: " +super.getDate()+"\n"+
+                    "Customer: " +super.getCustomer().getName()+"\n"+
+                    "Total Price: "+totalPrice+"\n"+
+                    "Status: "+super.getInvoiceStatus()+"\n"+
+                    "Payment Type: " +getPaymentType();
             }
         }
         else
         {
-                System.out.println("=====INVOICE=====");
-                System.out.println("ID: "+ super.getId());
-                System.out.println("Food: "+ super.getFood().getName());
-                System.out.println("Date: " +super.getDate());
-                System.out.println("Customer: " +super.getCustomer().getName());
-                System.out.println("Total Price: "+totalPrice);
-                System.out.println("Status: "+super.getInvoiceStatus());
-                System.out.println("Payment Type: " +getPaymentType());
+                string=  
+                    "=====INVOICE====="+"\n"+
+                    "ID: "+ super.getId()+"\n"+
+                    "Food: "+ super.getFood().getName()+"\n"+
+                    "Date: " +super.getDate()+"\n"+
+                    "Customer: " +super.getCustomer().getName()+"\n"+
+                    "Total Price: "+totalPrice+"\n"+
+                    "Status: "+super.getInvoiceStatus()+"\n"+
+                    "Payment Type: " +getPaymentType();
         }
+        System.out.println(string); 
+        return string;
     }
 }
