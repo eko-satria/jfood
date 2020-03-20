@@ -4,10 +4,15 @@ import java.util.TimeZone;
 public class JFood
 {   
        public static void main (String[] args){
+           Promo promo1= new Promo (2, "dddd", 10, 2000,true);
+           Location location1 = new Location ("Jakarta","Jakarta","Pusat");
+           Seller seller1 = new Seller(1, "hanon", "hanon22@gmail.com", "123", location1);
+           Food food1 = new Food(1, "ocha",seller1, 12500, FoodCategory.Japanese);
+           Food food2 = new Food(2, "nasi goreng",seller1, 20000, FoodCategory.Rice);
            
            Customer customer1 = new Customer
            (12, "wahyudi", ".wahyudicanda@gmail.co.id", "Salto22",
-            new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angles")));
+           new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angles")));
            Customer customer2 = new Customer
            (13, "salladin", "sal-haddin@gmail.com", "cusTa12", 2019,2,05);
            Customer customer3 = new Customer
@@ -21,7 +26,7 @@ public class JFood
            CS_invoice1.setTotalPrice();
            CS_invoice1.toString();
            
-           CashInvoice C_invoice1 = new CashInvoice(1, food1, "2-02-2020", customer1, InvoiceStatus.ONGOING);
+           CashInvoice C_invoice1 = new CashInvoice(1, food1, new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angles")), customer1, InvoiceStatus.ONGOING);
            C_invoice1.setTotalPrice();
            C_invoice1.toString();
 
