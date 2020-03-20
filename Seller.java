@@ -131,8 +131,10 @@ public class Seller
         this.location = location; //assign location ke location instance
     }
     
-    public void printData ()
+    public String toString ()
     {
-
+        String temp = "ID: "+id+"\n"+"Name: "+name+"\n"+"Phone Number: "+phoneNumber+"\n"; 
+        String temp1 = "Location"+getLocation();
+        return temp+temp1;
     }
 }

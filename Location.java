@@ -84,8 +84,9 @@ public class Location
         this.description = description; //assign description ke description instance
     }
     
-    public void printData ()
+    public String toString()
     {
-        System.out.println(province);
+        String temp= "Province: "+province+"\n"+"City: "+city+"\n"+"Description: "+description;
+        return temp;
     }
 }

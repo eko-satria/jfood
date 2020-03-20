@@ -34,7 +34,11 @@ public class Promo
     public void setId(int id){}
     public void setCode(String code){}
     public void setDiscount(String discount){}
-    public void setMinPrice(){}
-    public void setActive(){}
-    public void printData(){}
+    public void setMinPrice(int minPrice){}
+    public void setActive(boolean active){}
+    public String toString()
+    {
+        String temp = "ID: "+ id+"\n"+"Code: "+code+"\n"+"Discount: "+discount+"\n"+"MinPrice: "+ minPrice+"\n"+"Active Status: "+ active;
+        return temp;
+    };
 }

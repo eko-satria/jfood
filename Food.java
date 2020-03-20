@@ -133,14 +133,11 @@ public class Food
         this.category = category; //assign category ke category instance
     }
     
-    public void printData()
+    public String toString()
     {
-           System.out.println("===========FOOD===========");
-           System.out.println(id);
-           System.out.println(name);
-           System.out.println(seller.getName());
-           System.out.println(getSeller().getLocation().getCity());
-           System.out.println(getPrice());
-           System.out.println(getCategory());
+           String temp = "ID: "+id + "\n" + "Name: "+ name + "\n"+"Seller: "+ seller.getName()+"\n";
+           String temp1 = "City: "+getSeller().getLocation().getCity()+"\n";
+           String temp2 = "Price: " + getPrice()+ "\n"+"Category: "+getCategory();
+           return temp+temp1+temp2;
     }
 }

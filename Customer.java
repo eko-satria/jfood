@@ -22,8 +22,8 @@ public class Customer
     {
         this.id = id; //id disini mengarah pada id instance
         this.name = name; //name disini mengarah pada name instance
-        this.email = email; //email disini mengarah pada email instance
-        this.password = password; //password disini mengarah pada password instance
+        setEmail(email);
+        setPassword(password);
         this.joinDate = joinDate; //joinDate disini mengarah pada joinDate instance
     }
     
@@ -31,18 +31,17 @@ public class Customer
     {
         this.id = id; //id disini mengarah pada id instance
         this.name = name; //name disini mengarah pada name instance
-        this.email = email; //email disini mengarah pada email instance
-        this.password = password; //password disini mengarah pada password instance
+        setEmail(email);
+        setPassword(password);
         this.joinDate = new GregorianCalendar(year, month, dayofMonth);
     }
     
     public Customer(int id, String name, String email, String password)
     {
         this.id = id; //id disini mengarah pada id instance
-        this.name = name; //name disini mengarah pada name instance
-        this.email = email; //email disini mengarah pada email instance
-        this.password = password; //password disini mengarah pada password instance
-       
+        this.name = name; //name disini mengarah pada name instance  
+        setEmail(email);
+        setPassword(password);
     }
     
     /**
@@ -179,12 +178,19 @@ public class Customer
     
     public void setJoinDate(int year, int month, int dayofMonth)
     {
-        this.joinDate = new GregorianCalendar(year, month, dayofMonth);
+        this.joinDate = new GregorianCalendar(year, month-1, dayofMonth);
     }
     
     public String toString()
     {
-        return name.toString();
+        if(joinDate != null)
+        {
+            
+            return "ID: "+id + "\n" + "Name: "+ name + "\n"+"Email: "+ email +"\n"+"Password: "+password +"\n"+"JoinDate: "+joinDate;
+        }else
+        {
+            return "ID: "+id + "\n" + "Name: "+ name + "\n"+"Email: "+ email +"\n"+"Password: "+password;
+        }
     }
     
 }
