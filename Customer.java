@@ -1,5 +1,10 @@
-import java.util.*;
-import java.util.regex.*;
+import java.util.*; 
+import java.util.Calendar; 
+import java.util.Date; 
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat; 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern; 
 /**
  * ini berfungsi untuk menyimpan semua data dari customer
  *
@@ -132,13 +137,11 @@ public class Customer
         Matcher m = p.matcher(email);
         if(m.find())
         {
-            System.out.println("Email: " +m.group());
             this.email = email; //assign email ke email instance
         }
         else
         {
-            System.out.println("Email: null");
-            this.email = email; //assign email ke email instance
+            this.email = "null"; //assign email ke email instance
         }
     }
     
@@ -155,13 +158,11 @@ public class Customer
         Matcher m = p.matcher(email);
         if(m.find())
         {
-            System.out.println("Password" +m.group());
             this.password = password;
         }
         else
         {
-            System.out.println("Password: null");
-            this.password = password; //assign email ke email instance
+            this.password = "null"; //assign email ke email instance
         }
         
     }
@@ -183,14 +184,32 @@ public class Customer
     
     public String toString()
     {
-        if(joinDate != null)
+        String string = ""; 
+        if (joinDate!=null)
         {
+            Date date = joinDate.getTime(); 
+            SimpleDateFormat format1 = new SimpleDateFormat ("dd-MM-yyyy"); 
+            String date1 = format1.format(date); 
+            string =  
+                    "===================Customer================"+"\n"+
+                    "Id : "+ id+ "\n"+
+                    "Name : "+ name+ "\n"+
+                    "Email : "+ email+ "\n"+
+                    "Password : "+ password+ "\n"+
+                    "Join Date : "+ date1+"\n"; 
+                }
+         else{
+             string =  
+                    "===================Customer================"+"\n"+
+                    "Id : "+ id+ "\n"+
+                    "Name : "+ name+ "\n"+
+                    "Email : "+ email+ "\n"+
+                    "Password : "+ password+ "\n";
+                    //"Join Date : "+ joinDate+ "\n"; 
+            }
             
-            return "ID: "+id + "\n" + "Name: "+ name + "\n"+"Email: "+ email +"\n"+"Password: "+password +"\n"+"JoinDate: "+joinDate;
-        }else
-        {
-            return "ID: "+id + "\n" + "Name: "+ name + "\n"+"Email: "+ email +"\n"+"Password: "+password;
-        }
+        System.out.println(string); 
+        return string; 
     }
     
 }
