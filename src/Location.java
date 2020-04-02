@@ -1,92 +1,89 @@
 /**
- * ini berfungsi untuk menyimpan semua data dari location
- *
- * @author eko satria
- * @version 0.9.0
- * @sin28-02-2020
+ * Kelas memuat informasi yang dibutuhkan mengenai lokasi.
+ * 
+ * @author Eko Satria
+ * @version 27-02-2020
+ * 
  */
-public class Location
-{
-    // instance variables - replace the example below with your own
-    private String province, description, city;
+public class Location {             //kelas yang memuat informasi mengenai lokasi
+    private String province;        //variabel privat untuk provinsi dari lokasi
+    private String description;     //variabel privat untuk deskripsi dari lokasi
+    private String city;            //variabel privat untuk kota dari lokasi
 
     /**
-     * Constructor for objects of class Location
-     * @param city, @param province, @param description
+     * Costructor untuk kelas Location
+     * @param city Kota dari lokasi, bernilai string
+     * @param province Provinsi dari lokasi, bernilai string
+     * @param description Deskripsi dari lokasi, bernilai string
+     * @return nothing
      */
-    public Location(String city, String province, String description)
-    {
-        this.city = city; //city disini mengarah pada city instance
-        this.province = province; //province disini mengarah pada province instance
-        this.description = description; //description disini mengarah pada description instance
+    public Location(String city, String province, String description) {
+        this.city = city;
+        this.province = province;
+        this.description = description;
     }
 
-     /**
-     * get province method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return province
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan provinsi dari lokasi
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return province Province of location
      */
-    //get the province
-    public String getProvince()
-    {
-        return (province); //exit method province
-    }
-    
-         /**
-     * get city method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return city
-     */
-    //get the city
-    public String getCity()
-    {
-        return (city); //exit method city
-    }
-    
-         /**
-     * get description method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return description
-     */
-    //get the description
-    public String getDescription()
-    {
-        return (description); //exit method description
+    public String getProvince() {
+        return province;
     }
     
     /**
-     * set province
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param province
+     * Metode accessor yang digunakan untuk mendapatkan kota dari lokasi
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return city City of location
      */
-    public void setProvince (String province)
-    {
-        this.province = province; //assign province ke province instance
+    public String getCity() {
+        return city;
     }
     
     /**
-     * set city
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param city
+     * Metode accessor yang digunakan untuk mendapatkan deskripsi dari lokasi
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return description Description of location
      */
-    public void setCity (String city)
-    {
-        this.city = city; //assign city ke city instance
+    public String getDescription() {
+        return description;
     }
     
     /**
-     * set description
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param description
+     * Metode mutator yang digunakan untuk mengatur provinsi dari lokasi
+     * @param province Province of location
+     * @return nothing
      */
-    public void setDescription (String description)
-    {
-        this.description = description; //assign description ke description instance
+    public void setProvince(String province) {
+        this.province = province;
     }
     
-    public String toString()
-    {
-        String temp= "Province: "+province+"\n"+"City: "+city+"\n"+"Description: "+description;
-        return temp;
+    /**
+     * Metode mutator yang digunakan untuk mengatur kota dari lokasi
+     * @param city City of location
+     * @return nothing
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
+    /**
+     * Metode mutator yang digunakan untuk mengatur deskripsi dari lokasi
+     * @param description Description of location
+     * @return nothing
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    /**
+     * Metode yang digunakan untuk melakukan print terhadap variabel yang digunakan
+     */
+    public String toString() {
+        return province + " " + city + " " + description;
     }
 }

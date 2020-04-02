@@ -1,140 +1,134 @@
 /**
- * ini berfungsi untuk menyimpan semua data dari seller
- *
- * @author eko satria
- * @version 0.9.0
- * @sin28-02-2020
+ * Kelas memuat informasi yang dibutuhkan mengenai penjual.
+ * 
+ * @author Eko Satria
+ * @version 27-02-2020
+ * 
  */
-public class Seller
-{
-    // instance variables - replace the example below with your own
-    private int id;
-    private String name, email, phoneNumber;
-    private Location location;
 
-     /**
-     * Constructor for objects of class Seller
-     * @param id,@param name, 
-     * @param email, @param phoneNuber, @param location
+public class Seller {               //kelas untuk memuat informasi mengenai penjual.
+    private int id;                 //variabel privat untuk ID penjual
+    private String name;            //variabel privat untuk nama penjual
+    private String email;           //variabel privat untuk email penjual
+    private String phoneNumber;     //variabel privat untuk nomor telpon penjual
+    private Location location;      //variabel privat lokasi yang diambil dari kelas Location
+
+    /**
+     * Constructor untuk kelas Seller
+     * @param id ID dari penjual, bernilai integer
+     * @param name Nama dari penjual, bernilai string
+     * @param email Email dari penjual, bernilai string
+     * @param phoneNumber Nomor telpon dari penjual, bernilai string
+     * @param location Lokasi dari penjual, diambil dari kelas Location
+     * @return nothing
      */
-    public Seller(int id, String name, String email, String phoneNumber, Location location)
-    {
-        this.id = id; //id disini mengarah pada id instance
-        this.name = name; //name disini mengarah pada name instance
-        this.email =email; //email disini mengarah pada email instance
-        this.phoneNumber = phoneNumber; //phoneNumber disini mengarah pada phoneNumber instance
-        this.location = location; //location disini mengarah pada location instance
+    public Seller(int id, String name, String email, String phoneNumber, Location location) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
     }
 
-     /**
-     * get id method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return id
-     */
-    //get the id
-    public int getId()
-    {
-        return (id); //exit method id
-    }
-    
-     /**
-     * get name method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return name
-     */
-    //get the name
-    public String getName()
-    {
-        return name; //exit method name
-    }
-    
-     /**
-     * get email method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return email
-     */
-    //get the id
-    public String getEmail()
-    {
-        return (email); //exit method email
-    }
-    
-     /**
-     * get phoneNumber method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return phoneNumber
-     */
-    //get the id
-    public String getPhoneNumber()
-    {
-        return (phoneNumber); //exit method phoneNumber
-    }    
-    
-     /**
-     * get location method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return location
-     */
-    //get the id
-    public Location getLocation()
-    {
-        return (location); //exit method location
-    }   
-    
     /**
-     * set id
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param id
+     * Metode accessor yang digunakan untuk mendapatkan ID penjual
+     * Metode akan mengembalikan nilai integer
+     * @param nothing
+     * @return id ID of seller
      */
-    public void setId(int id)
-    {
-        this.id = id; //assign id ke id instance
+    public int getId() {
+        return id;
     }
     
     /**
-     * set name
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param name
+     * Metode accessor yang digunakan untuk mendapatkan nama penjual
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return name Name of seller
      */
-    public void setName(String name)
-    {
-        this.name = name; //assign name ke name instance
+    public String getName() {
+        return name;
     }
     
     /**
-     * set email
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param id
+     * Metode accessor yang digunakan untuk mendapatkan email penjual
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return email Email of seller
      */
-    public void setEmail(String email)
-    {
-         this.email = email; //assign email ke email instance
+    public String getEmail() {
+        return email;
     }
     
     /**
-     * set phoneNumber
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param phoneNumber
+     * Metode accessor yang digunakan untuk mendapatkan nomor telpon penjual
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return phoneNumber Phone number of seller
      */
-    public void setPhoneNumber(String phoneNumber)
-    {
-        this.phoneNumber = phoneNumber; //assign phoneNumber ke phoneNumber instance
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
     
     /**
-     * set location
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param location
+     * Metode accessor yang digunakan untuk mendapatkan lokasi dari penjual
+     * Metode akan mengembalikan nilai sesuai dengan parameter dari kelas Location
+     * @param nothing
+     * @return location Location of seller
      */
-    public void setLocation (Location location)
-    {
-        this.location = location; //assign location ke location instance
+    public Location getLocation () {
+        return location;
     }
     
-    public String toString ()
-    {
-        String temp = "ID: "+id+"\n"+"Name: "+name+"\n"+"Phone Number: "+phoneNumber+"\n"; 
-        String temp1 = "Location"+getLocation();
-        return temp+temp1;
+    /**
+     * Metode mutator yang digunakan untuk mengatur ID dari seorang penjual
+     * @param id ID of seller
+     * @return nothing
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    /**
+     * Metode mutator yang digunakan untuk mengatur nama penjual
+     * @param name Name of seller
+     * @return nothing
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    /**
+     * Metode mutator yang digunakan untuk mengatur email penjual
+     * @param email Email of seller
+     * @return nothing
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    /**
+     * Metode mutator yang digunakan untuk mengatur nomor telpon dari penjual
+     * @param phoneNumber Phone number of seller
+     * @return nothing
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    /**
+     * Metode mutator yang digunakan untuk mengatur lokasi dari penjual
+     * @param location Location of seller
+     * @return nothing
+     */
+    public void setLocation (Location location) {
+        this.location = location;
+    }
+    
+    /**
+     * Metode yang digunakan untuk melakukan print terhadap variabel yang digunakan
+     */
+    public String toString () {
+        return id + " " + name + " " + phoneNumber + " " + location;
     }
 }

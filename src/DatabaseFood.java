@@ -1,45 +1,88 @@
 /**
- * ini berfungsi untuk menyimpan semua data dari databaseFood
- *
- * @author eko satria
- * @version 0.9.0
- * @sin28-02-2020
+ * Kelas memuat informasi yang dibutuhkan mengenai database makanan.
+ * 
+ * @author Eko Satria
+ * @version 27-02-2020
+ * 
  */
-public class DatabaseFood
-{
-    // instance variables - replace the example below with your own
-    private static String[] listFood;
+import java.util.*;
 
+public class DatabaseFood {             //kelas yang memuat informasi mengenai database makanan
+    private static ArrayList<Food> FOOD_DATABASE = new ArrayList<>();         //variabel privat berupa string dari daftar makanan
+    private static int lastId = 0;
+    
     /**
-     * Constructor for objects of class DatabaseFood
-     * @param listFood
+     * Constructor untuk kelas DatabaseFood
+     * @param nothing
+     * @return nothing
      */
-    public DatabaseFood()
-    {
-    }
-
-    public boolean addFood(Food food)
-    {
-        return (true); 
+    public DatabaseFood() {
+        
     }
     
-    public boolean removeFood(Food food)
-    {
-        return (true);
+    public static ArrayList<Food> getFoodDatabase() {
+        return FOOD_DATABASE;
     }
-        
-    public Seller getSeller()
-    {
+    
+    public static int getLastId() {
+        return lastId;
+    }
+    
+    public static Food getFoodById(int id) {
+        for(Food food : FOOD_DATABASE) {
+            if(food.getId() == id) {
+                return food;
+            }
+        }
         return null;
     }
+    
+    public static ArrayList<Food> getFoodBySeller(int id) {
+        for(Food seller : FOOD_DATABASE) {
+            if(seller.getId() == id) {
+                FOOD_DATABASE.add(seller);
+                return FOOD_DATABASE;
+            }
+        }
+        return null;
+    }
+    
+    public static ArrayList<Food> getFoodByCategory(FoodCategory category) {
+        ArrayList<Food> list = new ArrayList<Food>();
+        
+        for(Food food : FOOD_DATABASE) {
+            if(food.getCategory().equals(category)) {
+                list.add(food);
+                //return temp;
+            }
+        }
+        return list;
+    }
+
     /**
-     * get listFood method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return listFood
+     * Metode accessor yang digunakan untuk mendapatkan konfirmasi saat menambahkan makanan ke database, berisi boolean
+     * @param food Makanan yang akan ditambahkan ke database, diambil dari kelas Food
+     * @return boolean Hanya berisi benar atau tidak
      */
-    //get the listFood
-    public static String[] getListFood ()
-    {
-        return (listFood); //exit method listFood
+    public static boolean addFood (Food food) {
+        FOOD_DATABASE.add(food);
+        lastId = food.getId() + 1;
+        
+        return true;
+    }
+    
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan konfirmasi saat menghapus makanan di database, berisi boolean
+     * @param food Makanan yang akan dihapus di database, diambil dari kelas Food
+     * @return boolean Hanya berisi benar atau tidak
+     */
+    public static boolean removeFood (int id) {
+        for(Food food : FOOD_DATABASE) {
+            if (food.getId() == id) {
+                FOOD_DATABASE.remove(food);
+                return true;
+            }
+        }
+        return false;
     }
 }

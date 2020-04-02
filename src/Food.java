@@ -1,143 +1,133 @@
-
 /**
- * ini berfungsi untuk menyimpan semua data dari food
- *
- * @author eko satria
- * @version 0.9.0
- * @sin28-02-2020
+ * Kelas memuat informasi yang dibutuhkan mengenai makanan.
+ * 
+ * @author Eko Satria
+ * @version 27-02-2020
+ * 
  */
-public class Food
-{
-    // instance variables - replace the example below with your own
-    private int id, price;
-    private String name;
-    private Seller seller;
-    private FoodCategory category;
+public class Food {                     //kelas yang memuat informasi mengenai makanan
+    private int id;                     //variabel privat untuk ID dari makanan
+    private String name;                //variabel privat untuk nama dari makanan
+    private Seller seller;              //variabel privat untuk nama penjual makanan, diambil dari kelas Seller
+    private int price;                  //variabel privat untuk harga dari makanan
+    private FoodCategory category;      //variabel privat untuk kategori dari makanan, diambil dari enum FoodCategory
+    
+    /**
+     * Constructor untuk kelas Food
+     * @param id ID dari makanan, bernilai integer
+     * @param name Nama dari makanan, bernilai string
+     * @param seller Name penjual makanan, diambil dari kelas Seller
+     * @param price Harga dari makanan, bernilai integer
+     * @param category Kategori dari makanan, bernilai string, diambil dari enum FoodCategory
+     * @return nothing
+     */
+    public Food(int id, String name, Seller seller, int price, FoodCategory category){
+        this.id = id;
+        this.name = name;
+        this.seller = seller;
+        this.price = price;
+        this.category = category;
+    }
 
     /**
-     * Constructor for objects of class Customer
-     * @param id, @param name, 
-     * @param seller, @param price, @param category
+     * Metode accessor yang digunakan untuk mendapatkan ID makanan
+     * Metode akan mengembalikan nilai integer
+     * @param nothing
+     * @return id ID of food
      */
-    public Food(int id, String name, Seller seller, int price, FoodCategory category)
-    {
-        this.id = id; //id disini mengarah pada id instance
-        this.name = name; //name disini mengarah pada name instance
-        this.seller = seller; //seller disini mengarah pada seller instance
-        this.price = price; //price disini mengarah pada price instance
-        this.category = category; //category disini mengarah pada category instance
-    }
-
-     /**
-     * get id method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return id
-     */
-    //get the id
-    public int getId()
-    {
-        return (id); //exit method id
+    public int getId() {
+        return id;
     }
     
-     /**
-     * get seller method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return seller
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan nama makanan
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return name Name of food
      */
-    //get the seller
-    public Seller getSeller()
-    {
-        return (seller); //exit method seller
+    public String getName() {
+        return name;
     }
     
-     /**
-     * get name method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return name
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan nama penjual
+     * Metode akan mengembalikan nilai sesuai dengan parameter dari kelas Seller
+     * @param nothing
+     * @return seller Seller of food
      */
-    //get the name
-    public String getName()
-    {
-        return (name); //exit method name
+    public Seller getSeller () {
+        return seller;
     }
     
-     /**
-     * get price method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return price
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan harga makanan
+     * Metode akan mengembalikan nilai integer
+     * @param nothing
+     * @return price Price of food
      */
-    //get the price
-    public int getPrice()
-    {
-        return (price); //exit method price
+    public int getPrice() {
+        return price;
     }
     
-     /**
-     * get category method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return category
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan kategori dari makanan
+     * Metode akan mengembalikan nilai string
+     * @param nothing
+     * @return category Category of food
      */
-    //get the category
-    public FoodCategory getCategory()
-    {
-        return category; //exit method category
+    public FoodCategory getCategory() {
+        return category;
     }
     
-        /**
-     * set id
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param id
+    /**
+     * Metode mutator yang digunakan untuk mengatur ID dari makanan
+     * @param id ID of food
+     * @return nothing
      */
-    public void setId(int id)
-    {
-        this.id = id; //assign id ke id instance
+    public void setId(int id) {
+        this.id = id;
     }
     
-        /**
-     * set seller
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param seller
+    /**
+     * Metode mutator yang digunakan untuk mengatur nama dari makanan
+     * @param name Name of food
+     * @return nothing
      */
-    public void setSeller(Seller seller)
-    {
-        this.seller = seller; //assign seller ke seller instance
+    public void setName(String name) {
+        this.name = name;
     }
     
-        /**
-     * set name
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param name
+    /**
+     * Metode mutator yang digunakan untuk mengatur penjual dari makanan
+     * @param seller Seller of food
+     * @return nothing
      */
-    public void setName(String name)
-    {
-        this.name = name; //assign name ke name instance
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
     
-        /**
-     * set price
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param price
+    /**
+     * Metode mutator yang digunakan untuk mengatur harga dari makanan
+     * @param price Price of food
+     * @return nothing
      */
-    public void setPrice(int price)
-    {
-        this.price = price; //assign price ke price instance
+    public void setPrice(int price) {
+        this.price = price;
     }
     
-        /**
-     * set category
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param category
+    /**
+     * Metode mutator yang digunakan untuk mengatur kategori dari makanan
+     * @param category Category of food
+     * @return nothing
      */
-    public void setCategory(FoodCategory category)
-    {
-        this.category = category; //assign category ke category instance
+    public void setCategory(FoodCategory category) {
+        this.category = category;
     }
     
-    public String toString()
-    {
-           String temp = "ID: "+id + "\n" + "Name: "+ name + "\n"+"Seller: "+ seller.getName()+"\n";
-           String temp1 = "City: "+getSeller().getLocation().getCity()+"\n";
-           String temp2 = "Price: " + getPrice()+ "\n"+"Category: "+getCategory();
-           return temp+temp1+temp2;
+    /**
+     * Metode yang digunakan untuk melakukan print terhadap variabel yang digunakan
+     */
+    public String toString () {
+        return id + " " + name + " " + seller + " " + seller.getLocation().getCity() + " " + price + " " + category;
     }
 }

@@ -1,29 +1,37 @@
 /**
- * Enumeration class FoodCategory - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * Enum yang memuat informasi yang dibutuhkan mengenai kategori makanan
+ * 
+ * @author Eko Satria
+ * @version 05-03-2020
+ * 
  */
-public enum FoodCategory
-{
-    Beverages("Beverages"), 
-    Coffee("Coffee"), 
-    Western("Western"), 
-    Rice("Rice"), 
-    Noodles("Noodles"), 
-    Bakery("Bakery"), 
-    Japanese("Japanese");
+public enum FoodCategory {          //enum untuk kategori makanan
+    Beverages("Beverages"),         //isi enum
+    Coffee("Coffee"),               //~
+    Western("Western"),             //~
+    Snacks("Snacks"),               //~
+    Rice("Rice"),                   //~
+    Noodles("Noodles"),             //~
+    Bakery("Bakery"),               //~
+    Japanese("Japanese");           //akhir enum
     
-    public String p;
+    String category;                //variabel string untuk kategori yang dipilih
     
-    private FoodCategory(String p)
-    {
-        this.p = p;
+    /**
+     * Metode yang digunakan untuk mendapatkan kategori makanan
+     * @param category Category of food
+     * @return nothing
+     */
+    FoodCategory (String category) {
+        this.category = category;
     }
-
-    public String toString()
-    {
-        return toString();
+    
+    /**
+     * Metode yang digunakan untuk mengembalikan nilai string kategori makanan
+     * @param nothing
+     * @return category Category of food
+     */
+    public String toString () {
+        return category;
     }
 }
-

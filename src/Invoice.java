@@ -1,163 +1,172 @@
-import java.util.*; 
-import java.util.Calendar; 
-import java.util.Date; 
-import java.util.GregorianCalendar;
-import java.text.SimpleDateFormat; 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern; 
 /**
- * ini berfungsi untuk menyimpan semua data dari invoice
- *
- * @author eko satria
- * @version 0.9.0
- * @sin28-02-2020
+ * Kelas memuat informasi yang dibutuhkan mengenai faktur penjualan.
+ * Kelas ini bersifat abstrak
+ * 
+ * @author Eko Satria
+ * @version 27-02-2020
+ * 
  */
-public abstract class Invoice
-{
-    // instance variables - replace the example below with your own
-    private int id;
-    protected int totalPrice;
-    private Calendar date;
-    private Customer customer;
-    private PaymentType paymentType;
-    private InvoiceStatus invoiceStatus;
-    private Food food;
+
+/**
+ * Import library yang dibutuhkan
+ */
+import java.util.*;
+import java.text.SimpleDateFormat;
+
+public abstract class Invoice {                     //kelas yang memuat informasi mengenai faktur
+    private int id;                                 //variabel privat untuk ID dari faktur
+    private ArrayList<Food> foods;                              //variabel privat untuk ID dari makanan
+    private Calendar date;                          //variabel privat untuk tanggal faktur
+    protected int totalPrice;                       //variabel privat untuk total harga
+    private Customer customer;                      //variabel privat untuk pelanggan, diambil dari kelas Customer
+    private InvoiceStatus invoiceStatus;            //variabel privat untuk status faktur, diambil dari kelas InvoiceStatus
     
     /**
-     * Constructor for objects of class Invoice
-     * @param customer, @param id, @param idFood, 
-     * @param date, @param totalPrice 
+     * Constructor untuk kelas Invoice
+     * @param id ID dari faktur, bernilai integer
+     * @param food Informasi mengenai makanan yang terjual, diambil dari kelas Food
+     * @param customer Informasi pelanggan, diambil dari kelas Customer
+     * @param invoiceStatus Informasi mengenai status faktur, diambil dari kelas InvoiceStatus
+     * @return nothing
      */
-    public Invoice(int id, Food food, Calendar date, Customer customer, InvoiceStatus invoiceStatus)
-    {
-        this.customer = customer; // customer disini mengarah pada customer instance
-        this.id = id; //id disini mengarah pada id instance
-        this.food = food; // idFood disini mengarah pada idFood instance
-        this.date = date; //date disini mengarah pada date instance
-        this.totalPrice = totalPrice; //totalPrice disini mengarah pada totalPrice instance
-        this.invoiceStatus = invoiceStatus;
-        setDate(date);
-        setDate(date);
+    public Invoice (int id, ArrayList<Food> foods, Customer customer) {
+      this.id = id;
+      this.foods = new ArrayList<Food>();
+      this.customer = customer;
+      this.totalPrice = totalPrice;
+      this.date = Calendar.getInstance();
     }
 
-     /**
-     * get id method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return id
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan ID faktur
+     * Metode akan mengembalikan nilai integer
+     * @param nothing
+     * @return id ID of invoice
      */
-    //get the id
-    public int getId()
-    {
-        return id; //exit method id
-    }
-
-     /**
-     * get idFood method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return idFood
-     */
-    //get the idFood
-    public Food getFood()
-    {
-        return food; //exit method idFood
-    }    
- 
-         /**
-     * get date method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return date
-     */
-    //get the date
-    public Calendar getDate()
-    {
-        return date; //exit method date
-    }    
-
-         /**
-     * get totalPrice method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return totalPrice
-     */
-    //get the totalPrice
-    public int getTotalPrice()
-    {
-        return totalPrice; //exit method totalPrice
-    }    
-    
-     /**
-     * get customer method
-     * berfungsi mengambil objek state terakhir dari id instance
-     * @return customer
-     */
-    public Customer getCustomer()
-    {
-        return customer; //exit method customer
+    public int getId () {
+        return id;
     }
     
-    public abstract PaymentType getPaymentType();
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan informasi makanan
+     * Metode akan mengembalikan nilai berdasarkan parameter dari kelas Food
+     * @param nothing
+     * @return food Food information from Food class
+     */
+    public ArrayList<Food> getFoods () {
+        return foods;
+    }
     
-    public InvoiceStatus getInvoiceStatus()
-    {
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan tanggal faktur
+     * Metode akan mengembalikan nilai Calendar
+     * @param nothing
+     * @return date Date of invoice
+     */
+    public Calendar getDate () {
+        return date;
+    }
+    
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan total harga dari faktur
+     * Metode akan mengembalikan nilai integer
+     * @param nothing
+     * @return totalPrice Total price of invoice
+     */
+    public int getTotalPrice () {
+        return totalPrice;
+    }
+    
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan informasi pelanggan
+     * Metode akan mengembalikan nilai sesuai dengan parameter dari kelas Customer
+     * @param nothing
+     * @return customer Customer of invoice
+     */
+    public Customer getCustomer () {
+        return customer;
+    }
+    
+    /**
+     * Metode abstrak yang digunakan untuk mendapatkan tipe pembayaran untuk faktur
+     * Metode ini berhubungan dengan kelas CashInvoice dan CashlessInvoice
+     */
+    public abstract PaymentType getPaymentType ();
+    
+    /**
+     * Metode accessor yang digunakan untuk mendapatkan status dari faktur
+     * Metode akan mengembalikan nilai sesuai dengan parameter yang ada di kelas InvoiceStatus
+     * @param nothing
+     * @return invoiceStatus Invoice status from InvoiceStatus class
+     */
+    public InvoiceStatus getInvoiceStatus () {
         return invoiceStatus;
     }
     
-        /**
-     * set id
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param id
+    /**
+     * Metode mutator yang digunakan untuk mengatur ID dari faktur
+     * @param id ID of invoice
+     * @return nothing
      */
-    public void setId(int id)
-    {
-        this.id = id; //assign id ke id instance
+    public void setId (int id) {
+        this.id = id;
     }
     
-     /**
-     * set idFood
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param idFood
+    /**
+     * Metode mutator yang digunakan untuk mengatur parameter makanan
+     * @param food Food parameters
+     * @return nothing
      */
-    public void setFood(Food food)
-    {
-        this.food = food; //assign idFood ke idFood instance
+    public void setFood (Food food) {
+        this.foods = foods;
     }
     
-     /**
-     * set date
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param date
+    /**
+     * Metode mutator yang digunakan untuk mengatur tanggal dari faktur
+     * @param date Date of invoice
+     * @return nothing
      */
-    public void setDate(Calendar date)
-    {
-        this.date = date; //assign date ke date instance
+    public void setDate(Calendar date) {
+        this.date = date;
     }
     
-     /**
-     * set totalPrice
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param totalPrice
+    /**
+     * Metode mutator yang digunakan untuk mengatur tanggal dari faktur
+     * @param year Year of Gregorian Calendar
+     * @param month Month of Gregorian Calendar
+     * @param dayOfMonth Day of Gregorian Calendar
+     * @return nothing
      */
-    public abstract void setTotalPrice();
-       
-     /**
-     * set customer
-     * berfungsi mengupdate objek state terakhir dari id instance
-     * @param customer
+    public void setDate(int year, int month, int dayOfMonth){
+        date = new GregorianCalendar(dayOfMonth, month, year);
+    }
+    
+    /**
+     * Metode abstrak untuk mengatur total harga
+     * Metode ini berhubungan dengan kelas CashInvoice dan CashlessInvoice
      */
-    public void setCustomer(Customer customer)
-    {
-        this.customer = customer; //assign customer ke customer instance
+    public abstract void setTotalPrice ();
+    
+    /**
+     * Metode mutator yang digunakan untuk mengatur informasi pelanggan dari faktur
+     * @param customer Customer of invoice
+     * @return nothing
+     */
+    public void setCustomer (Customer customer) {
+        this.customer = customer;
     }
     
-    public void setInvoiceStatus(InvoiceStatus invoiceStatus)
-    {
-        this.invoiceStatus = invoiceStatus;
+    /**
+     * Metode mutator yang digunakan untuk mengatur informasi status faktur
+     * @param invoiceStatus Status of invoice
+     * @return nothing
+     */
+    public void setInvoiceStatus (InvoiceStatus invoiceStatus) {
+        this.invoiceStatus = InvoiceStatus.Ongoing;
     }
     
-    public void setDate(int year, int month, int dayofMonth)
-    {
-        this.date = new GregorianCalendar(year, month-1, dayofMonth);
-    }
-    
-    public String toString(){return "";}
-    
+    /**
+     * Metode yang digunakan untuk melakukan print terhadap variabel yang digunakan
+     */
+    public abstract String toString();
 }

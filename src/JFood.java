@@ -1,40 +1,33 @@
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+/**
+ *  Kelas yang memuat informasi mengenai sistem penjualan JFood.
+ *  
+ *  @author Eko Satria
+ *  @version 13-03-2020
+ *  
+ */
 
-public class JFood
-{   
-       public static void main (String[] args){
-           Promo promo1= new Promo (2, "dddd", 10, 2000,true);
-           Location location1 = new Location ("Jakarta","Jakarta","Pusat");
-           Seller seller1 = new Seller(1, "hanon", "hanon22@gmail.com", "123", location1);
-           Food food1 = new Food(1, "ocha",seller1, 12500, FoodCategory.Japanese);
-           Food food2 = new Food(2, "nasi goreng",seller1, 20000, FoodCategory.Rice);
-           
-           Customer customer1 = new Customer
-           (12, "wahyudi", ".wahyudicanda@gmail.co.id", "Salto22",
-           new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angles")));
-           Customer customer2 = new Customer
-           (13, "salladin", "sal-haddin@gmail.com", "cusTa12", 2019,2,05);
-           Customer customer3 = new Customer
-           (14, "einzben", "ain45@gmail.com", "cusTb123");
-           
-           customer1.setEmail(".wahyudicanda@gmail.co.id");
-           customer1.setPassword("salto22");
-           
-           
-           CashlessInvoice CS_invoice1 = new CashlessInvoice(2, food1, new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angles")), customer1, InvoiceStatus.ONGOING);
-           CS_invoice1.setTotalPrice();
-           CS_invoice1.toString();
-           
-           CashInvoice C_invoice1 = new CashInvoice(1, food1, new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angles")), customer1, InvoiceStatus.ONGOING);
-           C_invoice1.setTotalPrice();
-           C_invoice1.toString();
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.regex.*;
 
-           customer1.toString();
-           customer2.toString();
-           customer3.toString();
-    }
-             
-}
-     
+public class JFood {        //Kelas yang memuat informasi sistem penjualan JFood
     
+    public static void main (String[] args) {
+        Location location = new Location("Depok", "Jawa Barat", "Tempat Makan nomor 1 se-Depok");
+
+        DatabaseSeller.addSeller(new Seller(DatabaseCustomer.getLastId(), "Marinus Martin", "martinf95@gmail.gov", "08227617829", location));
+
+        DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId(), "Eko Satria", "eko.satria@ui.ac.id", "qwerty19OK"));
+        DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId(), "Eko Satria", "eko.satria@ui.ac.id", "WASD9090yeah"));
+        DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId(), "Fathur", "fathur@gmail.com", "AAAAAyeah10"));
+        
+        System.out.println(DatabaseCustomer.getCustomerDatabase());
+        
+        Food pizza = new Food(1, "Pizza", DatabaseSeller.getSellerById(0), 125000, FoodCategory.Western);
+        Food esTeh = new Food(2, "Iced Tea", DatabaseSeller.getSellerById(0), 3000, FoodCategory.Beverages);
+        Food esKopi = new Food(3, "Iced Cofee", DatabaseSeller.getSellerById(0), 20000, FoodCategory.Beverages);
+        
+        System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.Beverages));
+        System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.Bakery));
+    }
+}
