@@ -14,6 +14,8 @@ public class JFood {        //Kelas yang memuat informasi sistem penjualan JFood
     
     public static void main (String[] args) {
         Location location = new Location("Depok", "Jawa Barat", "Tempat Makan nomor 1 se-Depok");
+        Promo promo1 = new Promo(1,"Code1",10000,20000,false);
+        Promo promo2 = new Promo(1, "Code1",10000, 25000, true);
 
         DatabaseSeller.addSeller(new Seller(DatabaseCustomer.getLastId(), "Marinus Martin", "martinf95@gmail.gov", "08227617829", location));
 

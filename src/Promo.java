@@ -28,7 +28,7 @@ public class Promo {            //kelas yang memuat informasi mengenai promo.
         this.minPrice = minPrice;
         this.active = active;
     }
-    
+
     /**
      * Metode accessor yang digunakan untuk mendapatkan ID promo
      * Metode akan mengembalikan nilai integer
