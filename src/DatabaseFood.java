@@ -28,13 +28,13 @@ public class DatabaseFood {             //kelas yang memuat informasi mengenai d
         return lastId;
     }
     
-    public static Food getFoodById(int id) {
+    public static Food getFoodById(int id) throws FoodNotFoundException{
         for(Food food : FOOD_DATABASE) {
             if(food.getId() == id) {
                 return food;
             }
         }
-        return null;
+        throw new FoodNotFoundException(id);
     }
     
     public static ArrayList<Food> getFoodBySeller(int id) {
@@ -76,13 +76,13 @@ public class DatabaseFood {             //kelas yang memuat informasi mengenai d
      * @param food Makanan yang akan dihapus di database, diambil dari kelas Food
      * @return boolean Hanya berisi benar atau tidak
      */
-    public static boolean removeFood (int id) {
+    public static boolean removeFood (int id) throws FoodNotFoundException{
         for(Food food : FOOD_DATABASE) {
             if (food.getId() == id) {
                 FOOD_DATABASE.remove(food);
                 return true;
             }
         }
-        return false;
+        throw new FoodNotFoundException(id);
     }
 }

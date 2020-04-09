@@ -9,7 +9,7 @@ import java.util.*;
 public class DatabasePromo {                //kelas database promo
     private static ArrayList<Promo> PROMO_DATABASE = new ArrayList<>();     //variabel string yang berisikan daftar promo
     private static int lastId = 0;
-    
+
     /**
      * Constructor kelas database promo
      * @param nothing
@@ -27,16 +27,16 @@ public class DatabasePromo {                //kelas database promo
         return lastId;
     }
     
-    public static Promo getPromoById(int id) {
-        for (Promo promo : PROMO_DATABASE) {
+    public static Promo getPromoById(int id) throws PromoNotFoundException{
+            for (Promo promo : PROMO_DATABASE) {
             if(promo.getId() == id) {
                 return promo;
             }
         }
-        return null;
+        throw new PromoNotFoundException(id);
     }
-    
-    public static String getPromoByCode(String code) {
+
+    public static String getPromoByCode(String code) throws PromoNotFoundException{
         for(Promo promo : PROMO_DATABASE) {
             if(promo.getCode().equals(code)) {
                 return code;
@@ -50,15 +50,15 @@ public class DatabasePromo {                //kelas database promo
      * @param promo Promo yang akan ditambahkan di database, diambil dari kelas Promo
      * @return boolean Hanya berisi benar atau tidak
      */
-    public static boolean addPromo (Promo promo) {
+    public static boolean addPromo (Promo promo) throws PromoCodeAlreadyExistsException{
         for(Promo tester : PROMO_DATABASE) {
             if(tester.getCode().equals(promo.getCode())) {
-                return false;
+                throw new PromoCodeAlreadyExistsException(promo);
             }
         }
         PROMO_DATABASE.add(promo);
         lastId = promo.getId() + 1;
-        
+
         return true;
     }
     
@@ -87,13 +87,13 @@ public class DatabasePromo {                //kelas database promo
      * @param promo Promo yang akan ditambahkan di database, diambil dari kelas Promo
      * @return boolean Hanya berisi benar atau tidak
      */
-    public static boolean removePromo (int id) {
+    public static boolean removePromo (int id) throws PromoNotFoundException{
         for(Promo promo : PROMO_DATABASE) {
             if (promo.getId() == id) {
                 PROMO_DATABASE.remove(promo);
                 return true;
             }
         }
-        return false;
+        throw new PromoNotFoundException(id);
     }
 }

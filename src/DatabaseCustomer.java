@@ -41,10 +41,16 @@ public class DatabaseCustomer {         //kelas database pelanggan.
      * @param seller Informasi pelanggan yang akan ditambahkan di database, diambil dari kelas Customer
      * @return boolean Hanya berisi benar atau tidak
      */
-    public static boolean addCustomer(Customer customer) {
+    public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException{
+        for (Customer iterasi : CUSTOMER_DATABASE)
+        {
+            if(iterasi.getEmail().equals(customer.getEmail()))
+            {
+                throw new EmailAlreadyExistsException(customer);
+            }
+        }
         CUSTOMER_DATABASE.add(customer);
-        lastId = customer.getId() + 1;
-        
+        lastId = customer.getId();
         return true;
     }
     
@@ -53,13 +59,13 @@ public class DatabaseCustomer {         //kelas database pelanggan.
      * @param seller Informasi pelanggan yang akan dihapus di database, diambil dari kelas Customer
      * @return boolean Hanya berisi benar atau tidak
      */
-    public static boolean removeCustomer(int id) {
+    public static boolean removeCustomer(int id) throws CustomerNotFoundException{
         for(Customer customer : CUSTOMER_DATABASE) {
             if (customer.getId() == id) {
                 CUSTOMER_DATABASE.remove(customer);
                 return true;
             }
         }
-        return false;
+        throw new CustomerNotFoundException(id);
     }
 }
