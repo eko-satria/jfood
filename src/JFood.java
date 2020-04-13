@@ -1,9 +1,9 @@
 /**
  *  Kelas yang memuat informasi mengenai sistem penjualan JFood.
- *  
+ *
  *  @author Eko Satria
  *  @version 13-03-2020
- *  
+ *
  */
 
 import javax.xml.crypto.Data;
@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.regex.*;
 
 public class JFood {        //Kelas yang memuat informasi sistem penjualan JFood
-    
+
     public static void main (String[] args) {
         Location location = new Location("Depok", "Jawa Barat", "Tempat Makan nomor 1 se-Depok");
 
@@ -46,5 +46,18 @@ public class JFood {        //Kelas yang memuat informasi sistem penjualan JFood
 
         System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.Beverages));
         System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.Bakery));
+
+        try {
+            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, DatabaseFood.getFoodByCategory(FoodCategory.Bakery), DatabaseCustomer.getCustomerById(1)));
+            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, DatabaseFood.getFoodByCategory(FoodCategory.Western), DatabaseCustomer.getCustomerById(2)));
+            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, DatabaseFood.getFoodByCategory(FoodCategory.Coffee), DatabaseCustomer.getCustomerById(3)));
+
+            DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, DatabaseFood.getFoodByCategory(FoodCategory.Bakery), DatabaseCustomer.getCustomerById(1), 1000));
+            DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, DatabaseFood.getFoodByCategory(FoodCategory.Coffee), DatabaseCustomer.getCustomerById(2), 10000));
+
+            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, DatabaseFood.getFoodByCategory(FoodCategory.Noodles), DatabaseCustomer.getCustomerById(4)));
+        } catch(CustomerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

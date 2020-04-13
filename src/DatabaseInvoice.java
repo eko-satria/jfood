@@ -15,18 +15,18 @@ public class DatabaseInvoice {
         return INVOICE_DATABSE;
     }
 
-    public int getLastId()
+    public static int getLastId()
     {
         return lastId;
     }
 
-    public static Invoice getInvoiceById(int id) {
+    public static Invoice getInvoiceById(int id) throws InvoiceNotFoundException{
         for(Invoice invoice : INVOICE_DATABSE) {
             if(invoice.getId() == id) {
                 return invoice;
             }
         }
-        return null;
+        throw new InvoiceNotFoundException(id);
     }
 
     public static ArrayList<Invoice> getInvoiceByCustomer(int id) {
@@ -39,7 +39,7 @@ public class DatabaseInvoice {
         return null;
     }
 
-    public static boolean addInvoice(Invoice invoice)
+    public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException
     {
         if(invoiceStatus == InvoiceStatus.Ongoing)
         {
@@ -47,7 +47,7 @@ public class DatabaseInvoice {
             lastId = invoice.getId()+1;
             return true;
         }
-        return false;
+        throw new OngoingInvoiceAlreadyExistsException(invoice);
     }
 
     public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus)
@@ -65,13 +65,13 @@ public class DatabaseInvoice {
         return false;
     }
 
-    public static boolean removeInvoice (int id) {
+    public static boolean removeInvoice (int id) throws InvoiceNotFoundException{
         for(Invoice invoice : INVOICE_DATABSE) {
             if (invoice.getId() == id) {
                 INVOICE_DATABSE.remove(invoice);
                 return true;
             }
         }
-        return false;
+        throw new InvoiceNotFoundException(id);
     }
 }
