@@ -43,7 +43,7 @@ public class DatabaseCustomer {         //kelas database pelanggan.
      * @param seller Informasi pelanggan yang akan ditambahkan di database, diambil dari kelas Customer
      * @return boolean Hanya berisi benar atau tidak
      */
-    public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException{
+    public static boolean registerCustomer(Customer customer) throws EmailAlreadyExistsException{
         for (Customer iterasi : CUSTOMER_DATABASE)
         {
             if(iterasi.getEmail().equals(customer.getEmail()))
@@ -69,5 +69,17 @@ public class DatabaseCustomer {         //kelas database pelanggan.
             }
         }
         throw new CustomerNotFoundException(id);
+    }
+
+    public static Customer getCustomerLogin(String email, String password) throws CustomerNotFoundException
+    {
+        for (Customer customer : CUSTOMER_DATABASE)
+        {
+            if(customer.getEmail().equals(email) && customer.getPassword().equals(password))
+            {
+                return customer;
+            }
+        }
+        throw new CustomerNotFoundException();
     }
 }

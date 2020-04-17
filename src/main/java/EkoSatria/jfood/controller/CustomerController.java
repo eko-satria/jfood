@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class CustomerController {
 
+
     @RequestMapping("")
     public String indexPage(@RequestParam(value="name", defaultValue="world") String name) {
         return "Hello " + name;
@@ -24,18 +25,32 @@ public class CustomerController {
         return customer;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public Customer addCustomer(@RequestParam(value="name") String name,
-                                @RequestParam(value="email") String email,
-                                @RequestParam(value="password") String password)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public Customer registerCustomer(@RequestParam(value="name") String name,
+                                    @RequestParam(value="email") String email,
+                                    @RequestParam(value="password") String password)
     {
         Customer customer = new Customer(DatabaseCustomer.getLastId()+1, name, email, password);
         try {
-            DatabaseCustomer.addCustomer(customer);
+            DatabaseCustomer.registerCustomer(customer);
         } catch (EmailAlreadyExistsException e) {
             e.getMessage();
             return null;
         }
         return customer;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Customer getCustomerLogin(@RequestParam(value = "email") String email,
+                                     @RequestParam(value = "password") String password)
+    {
+        try {
+            DatabaseCustomer.getCustomerLogin(email, password);
+        }
+        catch (CustomerNotFoundException e){
+            e.getMessage();
+            return  null;
+        }
+        return null;
     }
 }
